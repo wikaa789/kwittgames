@@ -29,6 +29,7 @@
           </li>
           <li><%=link_to 'Kwitter', 'http://kwitterwilliam.herokuapp.com/tweets'%></li>
         <% else %>
+        <h1><%= 'Welcome ' + current_user.email %></h1>
             <li><%=link_to 'Kwitter', 'http://kwitterwilliam.herokuapp.com/tweets'%></li>
             <li><%=link_to'Post game', 'https://kwittgames-wikaa789.c9users.io/games'%></li>
           <li class="dropdown">
