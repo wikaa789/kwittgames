@@ -1,1 +1,28 @@
-<h1>KwittGames</h1>
+
+
+    <% if(!user_signed_in?) %>
+<header class="header-image">
+    <div class="headline">
+        <div class="container">
+            <h2>KwittGames</h2>
+            <h5>© Copyright William Kåre Nygård 2017</h5>
+            <h3>A great place to post, play and comment</h3>
+            <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-success btn-lg' %>
+            <%= link_to 'Log in', new_user_session_path, class: 'btn btn-success btn-lg' %>
+        </div>
+    </div>
+</header>
+   <% else %>
+  
+   <header class="header-image">
+    <div class="headline">
+        <div class="container">
+            <h2>KwittGames</h2>
+              <h5>© Copyright William Kåre Nygård 2017</h5>
+            <li><%=link_to'Post game', 'https://kwittgames-wikaa789.c9users.io/games', class: 'btn btn-success btn-lg'%></li>
+        </div>
+    </div>
+</header>
+<% end %>
+
+

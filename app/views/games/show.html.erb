@@ -26,6 +26,7 @@
 </p>
 
 <%= link_to 'Post a Comment', new_game_comment_path(@game) %>
+<li><%= link_to 'Back', "https://kwittgames-wikaa789.c9users.io/games"%></li>
   <% @comments.each do |comment| %>
     <h4><%= comment.body %> posted by <%= comment.user.email %></h4>
   <% end %>
