@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :games
+
+
+  
+  resources :comments
   devise_for :users
   root 'pages#home'
-
+  
+  resources :games do
+    resources :comments
+  end
 end

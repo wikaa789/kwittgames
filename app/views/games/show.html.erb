@@ -25,5 +25,7 @@
   <%= @game.user %>
 </p>
 
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<%= link_to 'Post a Comment', new_game_comment_path(@game) %>
+  <% @comments.each do |comment| %>
+    <h4><%= comment.body %> posted by <%= comment.user.email %></h4>
+  <% end %>
