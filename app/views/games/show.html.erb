@@ -17,16 +17,20 @@
 
 <p>
   <strong>Rating:</strong>
-  <%= @game.rating %>
+  <%= @average_rating %>
 </p>
+
+<%= image_tag @game.image, class: 'img-responsive' %>
 
 <p>
   <strong>User:</strong>
   <%= @game.user %>
 </p>
 
-<%= link_to 'Post a Comment', new_game_comment_path(@game) %>
-<li><%= link_to 'Back', "https://kwittgames-wikaa789.herokuapp.io/games"%></li>
+<%= link_to 'Rate this Game', new_game_rating_path(@game), class: "btn btn-primary btn-sm" %>
+<%= link_to 'Post a Comment', new_game_comment_path(@game), class: "btn btn-primary btn-sm" %>
+<li><%= link_to 'Back', games_path, class: "btn btn-primary btn-sm" %></li>
+  
   <% @comments.each do |comment| %>
     <h4><%= comment.body %> posted by <%= comment.user.email %></h4>
   <% end %>

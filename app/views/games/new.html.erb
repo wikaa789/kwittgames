@@ -1,5 +1,7 @@
-<h1>New Game</h1>
+<center><h1>Post a New Game</h1></center>
 
-<%= render 'form', game: @game %>
+<div style="max-width: 500px; margin: 0 auto">
+    <%= render 'form', game: @game %>
+</div>
 
 <%= link_to 'Back', games_path %>

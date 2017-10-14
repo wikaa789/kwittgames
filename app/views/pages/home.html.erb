@@ -19,10 +19,32 @@
         <div class="container">
             <h2>KwittGames</h2>
               <h5>© Copyright William Kåre Nygård 2017</h5>
-            <li><%=link_to'Post game', 'https://kwittgames-wikaa789.c9users.io/games', class: 'btn btn-success btn-lg'%></li>
+            <li><%=link_to'Post game', games_path, class: 'btn btn-success btn-lg'%></li>
         </div>
     </div>
 </header>
 <% end %>
+
+
+<center>
+<% @games.each do |game| %>
+    <div class="jumbotron"style="max-width: 700px">
+      <%= image_tag game.image(:large), class: 'img-responsive' %>
+      <h3><%= link_to game.title, game %></h3>
+      
+      <%= link_to 'Play Game', game.url, class: "btn btn-danger btn-md" %>
+      
+      
+      
+<% if user_signed_in? %>
+<% if current_user.id == 1 %>
+<br>
+    <%= link_to 'Edit', edit_game_path(game), class: "btn btn-danger btn-sm" %>
+ 
+  <% end %>
+<% end %>
+</div>
+<% end %>
+</center>
 
 

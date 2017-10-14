@@ -8,7 +8,13 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all
+   @games = Game.all.reverse_order
+   
+   if params[:search]
+      @games = Game.search(params[:search]).order("created_at DESC")
+    else
+      @games = Game.all.order("created_at DESC")
+    end
   end
 
   # GET /games/1
@@ -17,6 +23,16 @@ class GamesController < ApplicationController
     game = Game.find(params[:id])
     
     @comments = game.comments.reverse_order
+    
+    @ratings = game.ratings
+    
+    @sum_ratings = 0
+    
+    for rating in @ratings
+      @sum_ratings = @sum_ratings + rating.value
+    end
+    
+    @average_rating = (@sum_ratings.to_f / @ratings.length).round(1)
   end
 
   # GET /games/new
@@ -76,6 +92,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:title, :description, :creator, :rating, :user_id)
+      params.require(:game).permit(:title, :description, :creator, :rating, :image, :url, :user_id)
     end
 end
